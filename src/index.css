@@ -146,3 +146,7 @@ image {
   font-size: 1rem;
   margin-bottom: 40px;
 }
+
+pre > code {
+  color: #56ff00e3;
+}

@@ -28,7 +28,7 @@ const App = () => {
     const socket = io(API_URL)
     dispatch({ type: 'SOCKET', payload: socket })
     return () => { socket.close() }
-  }, [])
+  }, [dispatch])
 
   return (
     <>

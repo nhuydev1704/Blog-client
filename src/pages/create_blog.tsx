@@ -119,7 +119,6 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
 		}
 	}
 
-	if (!auth.user) return <NotFound />
 	return (
 		<div style={{ margin: '40px 0' }}>
 			<Loading loadFull loadingProps={loading}>
