@@ -20,8 +20,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getHomeBlogs())
-    dispatch(getCategory())
     dispatch(refreshToken())
+    dispatch(getCategory())
   }, [dispatch])
 
   useEffect(() => {
