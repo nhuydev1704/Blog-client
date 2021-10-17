@@ -75,6 +75,7 @@ const TinyEditor: React.FC<IProps> = ({ body, setBody }) => {
                         { text: 'C++', value: 'cpp' },
                     ],
                     file_browser_callback_types: 'image',
+                    codesample_global_prismjs: true,
                     file_picker_callback: async function (callback, value, meta) {
                         if (meta?.filetype === 'image') {
                             let input: any = document.getElementById('my-file-upload');
