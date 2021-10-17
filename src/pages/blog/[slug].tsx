@@ -53,7 +53,7 @@ const BlogDetail = () => {
 	return (
 		<Loading loadFull loadingProps={loading}>
 			<Row justify="center" style={{ marginTop: "40px" }}>
-				<Col lg={18} sm={22} xs={23} style={{ overflow: 'hidden' }}>
+				<Col lg={18} sm={24} xs={24} style={{ overflow: 'hidden' }}>
 					{
 						blog && <DisplayBlog blog={blog} />
 					}

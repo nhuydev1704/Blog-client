@@ -121,11 +121,11 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
         <div style={{ margin: '40px 0' }}>
             <Loading loadFull loadingProps={loading}>
                 <Row gutter={[16, 16]}>
-                    <Col span={12}>
+                    <Col xs={24} sm={24} md={12}>
                         <h3>Thông tin bài đăng</h3>
                         <FormCreateBlog blog={blog} setBlog={setBlog} />
                     </Col>
-                    <Col span={12}>
+                    <Col xs={24} sm={24} md={12}>
                         <h3>Xem trước</h3>
                         <PreviewBlog blog={blog} />
                     </Col>
