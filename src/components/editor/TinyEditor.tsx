@@ -2,7 +2,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { notification } from 'antd';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import 'tinymce/tinymce'
+import 'tinymce/tinymce';
 import 'tinymce/icons/default';
 import 'tinymce/plugins/advlist';
 import 'tinymce/plugins/anchor';
@@ -32,23 +32,20 @@ import 'tinymce/themes/silver';
 import { ALERT } from '../../redux/types/alertType';
 import { checkImage, imageUpload } from '../../utils/imageUpload';
 
-
 interface IProps {
-    body: string,
-    setBody: (value: string) => void
+    body: string;
+    setBody: (value: string) => void;
 }
 
 const TinyEditor: React.FC<IProps> = ({ body, setBody }) => {
-
-
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const handleEditorChange = (content: any, editor: any) => {
         setBody(content);
-    }
+    };
 
     return (
         <>
-            <input id="my-file-upload" accept='image/*' type="file" name="my-file-upload" style={{ display: "none" }} />
+            <input id="my-file-upload" accept="image/*" type="file" name="my-file-upload" style={{ display: 'none' }} />
             <Editor
                 // onInit={(evt: any, editor: any) => editorRef.current = editor}
                 init={{
@@ -57,13 +54,26 @@ const TinyEditor: React.FC<IProps> = ({ body, setBody }) => {
                     menubar: true,
                     statubar: true,
                     plugins: [
-                        "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                        "save table contextmenu directionality emoticons template codesample fullscreen"
+                        'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                        'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                        'save table contextmenu directionality emoticons template codesample fullscreen',
                     ],
-                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | codesample fullscreen",
+                    toolbar:
+                        'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | codesample fullscreen',
                     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                     paste_data_images: true,
+                    codesample_languages: [
+                        { text: 'HTML/XML', value: 'markup' },
+                        { text: 'JavaScript', value: 'javascript' },
+                        { text: 'CSS', value: 'css' },
+                        { text: 'PHP', value: 'php' },
+                        { text: 'Ruby', value: 'ruby' },
+                        { text: 'Python', value: 'python' },
+                        { text: 'Java', value: 'java' },
+                        { text: 'C', value: 'c' },
+                        { text: 'C#', value: 'csharp' },
+                        { text: 'C++', value: 'cpp' },
+                    ],
                     file_browser_callback_types: 'image',
                     file_picker_callback: async function (callback, value, meta) {
                         if (meta?.filetype === 'image') {
@@ -72,10 +82,10 @@ const TinyEditor: React.FC<IProps> = ({ body, setBody }) => {
                             input.onchange = async () => {
                                 dispatch({ type: ALERT, payload: { loading: true } });
                                 var file = input.files[0];
-                                const check = await checkImage(file)
+                                const check = await checkImage(file);
                                 if (check !== '' && check) {
                                     notification['error']({
-                                        message: "Blog Nguyễn Như Ý",
+                                        message: 'Blog Nguyễn Như Ý',
                                         description: check,
                                     });
                                     dispatch({ type: ALERT, payload: { loading: false } });
@@ -84,7 +94,7 @@ const TinyEditor: React.FC<IProps> = ({ body, setBody }) => {
                                 const photo = await imageUpload(file);
                                 if (photo.url) {
                                     callback(photo.url!, {
-                                        alt: file.name
+                                        alt: file.name,
                                     });
                                 }
                                 dispatch({ type: ALERT, payload: { loading: false } });
@@ -99,6 +109,6 @@ const TinyEditor: React.FC<IProps> = ({ body, setBody }) => {
             />
         </>
     );
-}
+};
 
 export default TinyEditor;
