@@ -9,7 +9,6 @@ import Comments from "../comments";
 import InputComment from "../comments/InputComment";
 import PaginationComponent from '../pagination';
 import Prism from "prismjs";
-import "prismjs/themes/prism-okaidia.css";
 import 'clipboard';
 import 'prismjs/plugins/toolbar/prism-toolbar';
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
