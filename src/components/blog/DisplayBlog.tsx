@@ -8,13 +8,28 @@ import { IBlog, IComment, IUser, RootStore } from "../../utils/TypeScript";
 import Comments from "../comments";
 import InputComment from "../comments/InputComment";
 import PaginationComponent from '../pagination';
+import Prism from "prismjs";
+import "prismjs/themes/prism-okaidia.css";
+import 'clipboard';
+import 'prismjs/plugins/toolbar/prism-toolbar';
+import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
+import 'prismjs/components/prism-java';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-c';
+import 'prismjs/components/prism-cpp';
+import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-typescript';
+import "prismjs/components/prism-jsx"
 
 interface IProps {
 	blog: IBlog;
 }
 
 const DisplayBlog: React.FC<IProps> = ({ blog }) => {
-	const { auth, comments } = useSelector((state: RootStore) => state);
+	const { auth, comments, callback } = useSelector((state: RootStore) => state);
 	const dispatch = useDispatch();
 	const history = useHistory()
 
@@ -36,6 +51,10 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
 		setShowComments([data, ...showComments]);
 		dispatch(createComment(data, auth.access_token));
 	};
+
+	React.useLayoutEffect(() => {
+        Prism.highlightAll();
+    }, [blog.content, callback])
 
 	useEffect(() => {
 		setShowComments(comments.data)
