@@ -55,7 +55,7 @@ const CardBlog = (props: any) => {
                                 height: '366px',
                             }}
                         >
-                            <Row gutter={[0, 16]}>
+                            <Row gutter={[0, 6]}>
                                 <Col span={24}>
                                     <h3>
                                         <Tooltip placement="top" title={item.title}>

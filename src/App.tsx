@@ -13,6 +13,7 @@ import moment from 'moment';
 import 'moment/locale/vi'; // without this line it didn't work
 import { API_URL } from './utils/config';
 import { RootStore } from './utils/TypeScript';
+
 moment.locale('vi');
 
 const App = () => {

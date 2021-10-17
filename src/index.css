@@ -146,7 +146,36 @@ image {
   font-size: 1rem;
   margin-bottom: 40px;
 }
+.code-toolbar {
+    position: relative;
+}
+.toolbar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+pre > code, .token {
+  font-family: 'Fira Code', monospace !important;
+  font-weight: 400;
+}
 
+.token {
+  padding: 6px 0 !important;
+  display: inline-block;
+}
+
+.toolbar > .toolbar-item > button.copy-to-clipboard-button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 3px;
+    background: transparent;
+    color: deeppink;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+/* 
 pre > code {
   color: #56ff00e3;
-}
+} */
